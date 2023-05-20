@@ -1,0 +1,3 @@
+Objective: Make a simple to do list application using javascript, html ,and css. 
+
+A "todo" consists of title, description, created date, updated date, duedate (complete by date), and completed date. 

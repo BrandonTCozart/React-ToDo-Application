@@ -1,0 +1,1 @@
+Objective: Implement node.js for backend functionality, aswell as firebase. Back Objectives up into firebase. 
