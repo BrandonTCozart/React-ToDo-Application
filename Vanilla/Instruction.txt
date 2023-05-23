@@ -1,3 +1,7 @@
-Objective: Make a simple to do list application using javascript, html ,and css. 
-
+Objective: Make a simple to do list application using javascript (Make use of jquery aswell), html ,and css. 
 A "todo" consists of title, description, created date, updated date, duedate (complete by date), and completed date. 
+
+html- https://www.w3schools.com/html/
+css- https://www.w3schools.com/css/
+javascript- https://www.w3schools.com/js/
+jquery- https://www.w3schools.com/jquery/
