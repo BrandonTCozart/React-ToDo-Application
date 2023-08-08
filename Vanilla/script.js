@@ -4,6 +4,9 @@ const date = $(".date");
 const daysContainer = $(".days");
 const prev = $(".prev");
 const next = $(".next");
+const todayButton = $(".today-button");
+const gotoButton = document.querySelector(".goto-button");
+const dateInput = document.querySelector(".date-input");
 
 //Creates dates
 let today = new Date();
@@ -70,7 +73,7 @@ function createCalendar() {
 }
 createCalendar();
 
-//creates previous and next months
+//creates previous and next months changer
 
 function prevMonth() {
   month--;
@@ -90,3 +93,56 @@ function nextMonth() {
 }
 $(".next").on("click", nextMonth);
 $(".prev").on("click", prevMonth);
+
+//Date Go to button
+$(".today-button").on("click", () => {
+  today = new Date();
+  month = today.getMonth();
+  year = today.getFullYear();
+  createCalendar();
+});
+
+//Date input
+
+dateInput.addEventListener("input", (e) => {
+  // Remove non-numeric characters from the input value
+  dateInput.value = dateInput.value.replace(/[^0-9/]/g, "");
+
+  if (dateInput.value.length === 2) {
+    dateInput.value += "/";
+  }
+
+  //sets a limit to 7 characters
+  if (dateInput.value.length > 7) {
+    dateInput.value = dateInput.value.slice(0, 7);
+  }
+
+  // deletes the slash and the second number for the month
+  dateInput.addEventListener("input", function (e) {
+    if (e.inputType === "deleteContentBackward") {
+      if (dateInput.value.length === 3) {
+        dateInput.value = dateInput.value.slice(0, 1);
+        //NOTE this part is also deleting the fist number in year
+      }
+    }
+  });
+});
+
+gotoButton.addEventListener("click", gotoDate);
+
+
+function gotoDate() {
+  const dateArray = dateInput.value.split("/");
+
+  if (dateArray.length === 2) {
+    if (dateArray[0] > 0 && dateArray[0] < 13 && dateArray[1].length === 4) {
+      month == dateArray[0] - 1;
+      year = dateArray[1];
+      createCalendar();
+      return;
+    }
+  }
+
+  //alert for invalid dates
+  alert("invalid date");
+}
